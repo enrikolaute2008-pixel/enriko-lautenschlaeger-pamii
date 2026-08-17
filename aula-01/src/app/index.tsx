@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
@@ -15,7 +15,7 @@ export default function HomeScreen() {
             </View>
             <View>
               <Text style={styles.helloText}>Olá, joãozinho</Text>
-              <Text style={styles.accountText}>agência ••63  conta •••13-</Text>
+              <Text style={styles.accountText}>agência ••06  conta •••07-</Text>
             </View>
             <Ionicons name="chevron-down" size={22} color="#fff" style={{ marginLeft: 'auto' }} />
           </View>
@@ -30,15 +30,31 @@ export default function HomeScreen() {
           <View style={styles.banner}>
             <Ionicons name="chatbubble-ellipses-outline" size={22} color="#fff" />
             <View style={{ flex: 1, marginLeft: 12 }}>
-              <Text style={styles.bannerTitle}>Seu app está de cara nova!</Text>
-              <Text style={styles.bannerSubtitle}>Os seus dados continuam seguros e protegidos</Text>
+              <Text style={styles.bannerTitle}>Seu app está de cara mais tesuda!</Text>
+              <Text style={styles.bannerSubtitle}>Os seus dados continuam seguros pra cacete</Text>
             </View>
             <Ionicons name="close" size={20} color="#fff" />
+          </View>
+
+          {/* Grid de botões grandes (sem Cartões) */}
+          <View style={styles.grid}>
+            <MenuCard icon="swap-horizontal" label="Pix e transferir/não clica que c não tem grana" />
+            <MenuCard icon="barcode-outline" label="Pagar/sofrer" />
+            <MenuCard icon="list-outline" label="Extrato/chorar" />
           </View>
 
         </ScrollView>
       </SafeAreaView>
     </View>
+  );
+}
+
+function MenuCard({ icon, label }: { icon: any; label: string }) {
+  return (
+    <TouchableOpacity style={styles.menuCard}>
+      <Ionicons name={icon} size={24} color="#fff" />
+      <Text style={styles.menuCardLabel}>{label}</Text>
+    </TouchableOpacity>
   );
 }
 
@@ -114,5 +130,26 @@ const styles = StyleSheet.create({
     color: '#dce8fb',
     fontSize: 12,
     marginTop: 2,
+  },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  menuCard: {
+    width: '48%',
+    borderWidth: 1,
+    borderColor: '#ffb380',
+    borderRadius: 16,
+    height: 130,
+    padding: 14,
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  menuCardLabel: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
